@@ -15,17 +15,16 @@ An intuitive derivation of smoothing splines from variational calculus, demonstr
 
 We compare two solutions to the same regularized regression problem: the analytic cubic smoothing spline and a fully connected neural network. Both are obtained by minimizing
 
-$$
-\displaystyle
+```math
 J[f]
 =
 \frac{1}{2}\sum_{i=1}^{N}
-\left(y_i-f(x_i)\right)^2
+\bigl(y_i-f(x_i)\bigr)^2
 +
 \frac{\lambda}{2}
 \int_{0}^{1}
-\left(f''(x)\right)^2\,dx.
-$$
+\bigl(f''(x)\bigr)^2\,dx
+```
 
 The first term measures the error on the training data, while the second penalizes the integrated curvature of the fitted function. The parameter $\lambda$ therefore controls the tradeoff between fitting the data and producing a smooth solution.
 
