@@ -26,7 +26,7 @@ J[f]
 \bigl(f''(x)\bigr)^2\,dx
 ```
 
-The first term measures the error on the training data, while the second penalizes the integrated curvature of the fitted function. The parameter $\lambda$ therefore controls the tradeoff between fitting the data and producing a smooth solution.
+The first term measures the training data error, while the second penalizes functions with large second derivatives. The parameter $\lambda$ controls the tradeoff between fitting the data and producing a smooth solution.
 
 The dataset was generated from
 
