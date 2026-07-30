@@ -1,9 +1,9 @@
-from pathlib import Path
-
 import torch
 import torch.nn as nn
 import torch.optim as optim
 import matplotlib.pyplot as plt
+from pathlib import Path
+
 
 plt.rcParams.update({
     "mathtext.fontset": "stix",
@@ -12,7 +12,8 @@ plt.rcParams.update({
 
 torch.set_default_dtype(torch.float64)
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-save_dir = Path(__file__).resolve().parent
+save_dir = Path(__file__).resolve().parent.parent / "figures"
+save_dir.mkdir(parents=True, exist_ok=True)
 
 seed = 1234
 torch.manual_seed(seed)
@@ -329,7 +330,7 @@ plt.xlabel(r"$x$", fontsize=label_fontsize)
 plt.ylabel(r"$f(x)$", fontsize=label_fontsize)
 plt.title(r"Neural Network vs. Natural Cubic Smoothing Spline", fontsize=title_fontsize)
 plt.tick_params(axis="both", labelsize=tick_fontsize)
-fig1.savefig(save_dir / "nn_vs_natural_spline.png", dpi=300, bbox_inches="tight")
+fig1.savefig(save_dir / "spline_vs_nn_natural_BCs.png", dpi=300, bbox_inches="tight")
 plt.show()
 
 x_plot = torch.linspace(0.0, 1.0, 500, device=device, dtype=torch.float64).requires_grad_(True)
@@ -413,5 +414,5 @@ plt.legend(fontsize=legend_fontsize)
 plt.tick_params(axis="both", labelsize=tick_fontsize)
 
 plt.tight_layout()
-fig2.savefig(save_dir / "spline_vs_nn_derivatives.png", dpi=300, bbox_inches="tight")
+fig2.savefig(save_dir / "spline_vs_nn_derivatives_natural_BCs.png", dpi=300, bbox_inches="tight")
 plt.show()
