@@ -20,7 +20,7 @@ f_{\mathrm{true}}(x)=\sin(2\pi x),
 \qquad x\in[0,1],
 $$
 
-using \(N=30\) datapoints with additive Gaussian noise. Unless otherwise stated, we used a regularization strength of \(\lambda=10^{-4}\).
+using \(N=30\) datapoints with additive Gaussian noise. Unless otherwise stated, we used a regularization strength of $\lambda=10^{-4}$.
 
 The neural network was a fully connected tanh network with three hidden layers of width \(64\),
 
@@ -28,7 +28,7 @@ $$
 1\rightarrow64\rightarrow64\rightarrow64\rightarrow1,
 $$
 
-and was trained using Adam for 20,000 epochs with learning rate \(10^{-3}\).
+and was trained using Adam for 20,000 epochs with learning rate $10^{-3}$.
 
 We considered two boundary setups. For the free-endpoint model, no explicit boundary conditions were imposed on the neural network. For the fixed-endpoint model, we imposed
 
@@ -45,7 +45,7 @@ matching the endpoint values of the target function.
   <img src="figures/spline_vs_nn_fixed_BCs.png" width="45%" alt="Fixed-endpoint comparison">
 </p>
 
-The corresponding derivative comparisons are available for the
+These figures show excellent agreement between the regularized neural-network and analytic smoothing-spline solutions. The corresponding derivative comparisons are available for the
 [free-endpoint model](figures/spline_vs_nn_derivatives_natural_BCs.png)
 and [fixed-endpoint model](figures/spline_vs_nn_derivatives_fixed_BCs.png).
 
