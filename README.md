@@ -13,6 +13,22 @@ An intuitive derivation of smoothing splines from variational calculus, demonstr
 
 ## Numerical comparison
 
+We compare two solutions to the same regularized regression problem: the analytic cubic smoothing spline and a fully connected neural network. Both are obtained by minimizing
+
+$$
+\displaystyle
+J[f]
+=
+\frac{1}{2}\sum_{i=1}^{N}
+\left(y_i-f(x_i)\right)^2
++
+\frac{\lambda}{2}
+\int_{0}^{1}
+\left(f''(x)\right)^2\,dx.
+$$
+
+The first term measures the error on the training data, while the second penalizes the integrated curvature of the fitted function. The parameter $\lambda$ therefore controls the tradeoff between fitting the data and producing a smooth solution.
+
 The dataset was generated from
 
 $$
@@ -20,7 +36,7 @@ f_{\mathrm{true}}(x)=\sin(2\pi x),
 \qquad x\in[0,1],
 $$
 
-using \(N=30\) datapoints with additive Gaussian noise. Unless otherwise stated, we used a regularization strength of $\lambda=10^{-4}$.
+using \(N=30\) datapoints with additive Gaussian noise. Unless otherwise stated, we used a regularization strength of $\lambda=10^{-4}$. 
 
 The neural network was a fully connected tanh network with three hidden layers of width \(64\),
 
@@ -29,14 +45,6 @@ $$
 $$
 
 and was trained using Adam for 20,000 epochs with learning rate $10^{-3}$.
-
-Both models minimize a squared-error objective with the roughness penalty
-
-$$
-\lambda\int_0^1 \left[f''(x)\right]^2\,dx,
-$$
-
-which suppresses rapidly varying solutions.
 
 We considered two boundary setups. For the free-endpoint model, no explicit boundary conditions were imposed on the neural network. For the fixed-endpoint model, we imposed
 
